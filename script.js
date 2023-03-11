@@ -44,4 +44,11 @@ if (navigator.geolocation)
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
+
+    // Clear input fields
+    inputDistance.value =
+    inputDuration.value =
+    inputCadence.value =
+    inputElevation.value =
+      '';
 });
