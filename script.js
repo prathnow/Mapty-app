@@ -18,21 +18,21 @@ if (navigator.geolocation)
       const { latitude } = position.coords;
       const { longitude } = position.coords;
       console.log(latitude, longitude);
-      
+
       const coords = [latitude, longitude];
-      
+
       map = L.map('map').setView(coords, 13);
-      
+
       L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
-      
+
       L.marker(coords).addTo(map).bindPopup('You are there!').openPopup();
-      
+
       map.on('click', function (mapE) {
         mapEvent = mapE;
-      
+
         form.classList.remove('hidden');
         inputDistance.focus();
       });
@@ -41,3 +41,7 @@ if (navigator.geolocation)
       alert('Could not get your position');
     }
   );
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+});
