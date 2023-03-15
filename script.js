@@ -42,7 +42,7 @@ class Cycling extends Workout {
 
   constructor(coords, distance, duration, elevationGain) {
     super(coords, distance, duration);
-    this.elevationGain = this.elevationGain;
+    this.elevationGain = elevationGain;
     this.calcSpeed();
   }
 
