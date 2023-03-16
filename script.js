@@ -89,7 +89,6 @@ class App {
   _loadMap(position) {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
-    console.log(latitude, longitude);
 
     const coords = [latitude, longitude];
 
@@ -175,7 +174,6 @@ class App {
     }
     // Add new object workout array
     this.#workout.push(workout);
-    console.log(this.#workout);
 
     // Render workout on map as marker
     this._renderWorkoutMarker(workout);
@@ -258,14 +256,12 @@ class App {
 
   _moveToPopup(e) {
     const workoutEl = e.target.closest('.workout');
-    console.log(workoutEl);
 
     if (!workoutEl) return;
 
     const workout = this.#workout.find(
       work => work.id === workoutEl.dataset.id
     );
-    console.log(workout);
 
     this.#map.setView(workout.coords, this.#mapZoom, {
       animate: true,
