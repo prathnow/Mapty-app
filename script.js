@@ -103,6 +103,10 @@ class App {
     L.marker(coords).addTo(this.#map).bindPopup('You are there!').openPopup();
 
     this.#map.on('click', this._showForm.bind(this));
+
+    this.#workout.forEach(work => {
+      this._renderWorkoutMarker(work);
+    });
   }
 
   _showForm(mapE) {
