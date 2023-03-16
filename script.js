@@ -70,8 +70,9 @@ class App {
   #workout = [];
   constructor() {
     this._getPosition();
-    form.addEventListener('submit', this._newWorkout.bind(this));
+    this._getLocalStorage();
 
+    form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
@@ -276,6 +277,18 @@ class App {
 
   _setLocalStorage() {
     localStorage.setItem('workouts', JSON.stringify(this.#workout));
+  }
+
+  _getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('workouts'));
+    console.log(data);
+
+    if(!data) return;
+
+    this.#workout = data;
+    this.#workout.forEach(work => {
+      this._renderWorkout(work);
+    });
   }
 }
 
